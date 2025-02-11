@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "36ecc6ad-12ea-4fdb-b16f-ec9ac064b864",
+		"name": "Daily Journal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29468125"
+	},
+	"item": [
+		{
+			"name": "localhost:9090/DailyJournal/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"thoughts\":\"Good Morning\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/DailyJournal/",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"DailyJournal",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/DailyJournal/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"ID is a number and thoughts is a string\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    jsonData.forEach(item => {\r",
+							"        pm.expect(item.id).to.be.a(\"number\");\r",
+							"        pm.expect(item.thoughts).to.be.a(\"string\");\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/DailyJournal/",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"DailyJournal",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/DailyJournal/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"thoughts\":\"Im Happy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/DailyJournal/2",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"DailyJournal",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
